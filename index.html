@@ -127,12 +127,12 @@
   }
 
   document.getElementById('saveToLocalStorage').onclick = function () {
-    localStorage[editor.get().pacient.name] = editor.getText();
+    localStorage[editor.get().patient.name] = editor.getText();
   }
 
   setInterval(()=>{
     let aux = editor.get();
-      if (aux.pacient && aux.pacient.name) {
+      if (aux.patient && aux.patient.name) {
       document.getElementById('saveToLocalStorage').style.display = 'block';
       document.getElementById('saveToLocalStorage').click();
       document.getElementById('saveToLocalStorage').disabled = true;

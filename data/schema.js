@@ -2,15 +2,19 @@ var schema = {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "pacient": {
+    "patient": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string"
+        },
+        "bio": {
+          "type": "string"
         }
       },
       "required": [
-        "name"
+        "name",
+        "bio"
       ]
     },
     "sessions": {
@@ -23,7 +27,43 @@ var schema = {
               "type": "string"
             },
             "failConditions": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "patientStats": {
+                  "type": "object",
+                  "properties": {
+                    "stat1": {
+                      "type": "string"
+                    },
+                    "stat2": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "stat1",
+                    "stat2"
+                  ]
+                },
+                "initialWorldStats": {
+                  "type": "object",
+                  "properties": {
+                    "stat1": {
+                      "type": "string"
+                    },
+                    "stat2": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "stat1",
+                    "stat2"
+                  ]
+                }
+              },
+              "required": [
+                "patientStats",
+                "initialWorldStats"
+              ]
             },
             "initialWorldStats": {
               "type": "object",
@@ -40,7 +80,7 @@ var schema = {
                 "stat2"
               ]
             },
-            "pacientStats": {
+            "patientStats": {
               "type": "object",
               "properties": {
                 "stat1": {
@@ -86,7 +126,15 @@ var schema = {
                           "type": "object",
                           "properties": {
                             "text": {
-                              "type": "string"
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
                             },
                             "choices": {
                               "type": "array",
@@ -104,7 +152,7 @@ var schema = {
                                       "type": "object",
                                       "properties": {
                                         "goTo": {
-                                          "type": "integer"
+                                          "type": "string"
                                         },
                                         "vars": {
                                           "type": "object",
@@ -128,7 +176,7 @@ var schema = {
                                             "stat1"
                                           ]
                                         },
-                                        "pacientStats": {
+                                        "patientStats": {
                                           "type": "object",
                                           "properties": {
                                             "stat2": {
@@ -144,7 +192,1098 @@ var schema = {
                                         "goTo",
                                         "vars",
                                         "worldStats",
-                                        "pacientStats"
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "choices"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "choices"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "choices"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "choices"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "blocks"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "blocks": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "choices"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "choices"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "blocks"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "blocks": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "choices"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "text",
+                                    "resultText",
+                                    "effects"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "resultText": {
+                                      "type": "string"
+                                    },
+                                    "effects": {
+                                      "type": "object",
+                                      "properties": {
+                                        "goTo": {
+                                          "type": "string"
+                                        },
+                                        "vars": {
+                                          "type": "object",
+                                          "properties": {
+                                            "sceneVar1": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "sceneVar1"
+                                          ]
+                                        },
+                                        "worldStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat1": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat1"
+                                          ]
+                                        },
+                                        "patientStats": {
+                                          "type": "object",
+                                          "properties": {
+                                            "stat2": {
+                                              "type": "integer"
+                                            }
+                                          },
+                                          "required": [
+                                            "stat2"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "goTo",
+                                        "vars",
+                                        "worldStats",
+                                        "patientStats"
                                       ]
                                     }
                                   },
@@ -177,7 +1316,7 @@ var schema = {
             "name",
             "failConditions",
             "initialWorldStats",
-            "pacientStats",
+            "patientStats",
             "vars",
             "scenes"
           ]
@@ -186,7 +1325,7 @@ var schema = {
     }
   },
   "required": [
-    "pacient",
+    "patient",
     "sessions"
   ]
 }
